@@ -1,0 +1,34 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <main class="main">
+        <div class="main__container container">
+            <div class="details">
+                <div class="details__header">
+                    <div class="details__meta"></div>
+                    <div class="details__buttons">
+                        <form action="">
+                            <button type="submit" class="btn btn_secondary">Скачать PDF</button>
+                        </form>
+                        <form action="">
+                            <button type="submit" class="btn btn_secondary">Скачать DOCX</button>
+                        </form>
+                        <form action="">
+                        </form>
+                    </div>
+                </div>
+                <div class="details__content">
+                    <div class="details__column">
+                        <div class="details__embed">
+                            <embed class="repository__embed"
+                                   src="{{ path }}"
+                                   frameborder="0"
+                                   type="application/pdf">
+                        </embed>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

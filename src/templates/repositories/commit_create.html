@@ -1,0 +1,37 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <main class="main">
+        <div class="main__container container">
+            <div class="create">
+                <h2 class="create__title title">Создание коммита</h2>
+                <form action=""
+                      method="post"
+                      class="create__form"
+                      enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="create__item">
+                        <label for="id_commit" class="create__label">Коммит</label>
+                        <input id="id_message"
+                               name="message"
+                               type="text"
+                               class="create__input text-input"
+                               required>
+                    </div>
+                    <div class="create__item">
+                        <label class="create__file-label">
+                            <span class="create__file-btn btn btn_secondary">Выбрать файл</span>
+                            <input type="file"
+                                   class="create__file-input"
+                                   id="id_document"
+                                   name="document"
+                                   required>
+                        </label>
+                    </div>
+                    {{ form.errors }}
+                    <button type="submit" class="create__file-btn btn btn_primary">Сохранить</button>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

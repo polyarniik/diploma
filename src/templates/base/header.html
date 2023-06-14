@@ -1,0 +1,35 @@
+<header class="header">
+    <div class="header__container container">
+        <nav class="header__nav nav">
+            {% if user.is_authenticated %}
+                <div class="nav__item">
+                    <a href="{% url 'repositories:repository_list' %}">Репозитории</a>
+                </div>
+            {% endif %}
+            <div class="nav__item">
+                <a href="{% url 'compare_view' %}">Сравнить документы</a>
+            </div>
+        </nav>
+        <div class="header__auth">
+            {% if user.is_authenticated %}
+                <nav class="nav">
+                    <div class="nav__item">
+                        <span>{{ user.username }}</span>
+                    </div>
+                    <div class="nav__item">
+                        <a href="{% url 'users:logout' %}">Выход</a>
+                    </div>
+                </nav>
+            {% else %}
+                <nav class="nav">
+                    <div class="nav__item">
+                        <a href="{% url 'users:login' %}">Вход</a>
+                    </div>
+                    <div class="nav__item">
+                        <a href="{% url 'users:register' %}">Регистрация</a>
+                    </div>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
+</header>

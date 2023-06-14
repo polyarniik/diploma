@@ -14,26 +14,24 @@ celery = "~5.2"
 pre-commit = "~2.20"
 dj-database-url = "^1.2.0"
 psycopg2-binary = "^2.9.5"
+pdf2docx = "^0.5.6"
+pypdf2 = "^3.0.1"
+pillow = "^9.4.0"
+numpy = "^1.24.2"
+opencv-python = "^4.7.0.72"
+pymupdf = "^1.21.1"
+scikit-image = "^0.20.0"
+pyocr = "^0.8.3"
+xmldiff = "^2.6"
+black = "^23.3.0"
+docx2pdf = "^0.1.8"
 
 [tool.poetry.group.dev.dependencies]
-black = "~22.10"
+black = "~23.3.0"
 flake8 = "~5.0"
 flake8-django = "~1.1"
 flake8-pyproject = "^1.2.2"
 djlint = "~1.19"
-
-[tool.poetry.group.docker]
-optional = true
-
-[tool.poetry.group.docker.dependencies]
-python = "~3.10"
-Django = "~4.1"
-djangorestframework = "~3.14"
-django-environ = "~0.9"
-celery = "~5.2"
-pre-commit = "~2.20"
-dj-database-url = "^1.2.0"
-psycopg2 = "^2.9.5"
 
 [build-system]
 requires = ["poetry-core"]
@@ -72,4 +70,4 @@ blank_line_after_tag = "load,extends,include"
 blank_line_before_tag = "load,extends,include"
 profile = "django"
 format_attribute_template_tags = true
-ignore = "H006"
+ignore = "H006,H030,H031"

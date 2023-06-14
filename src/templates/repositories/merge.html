@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <main class="main">
+        <div class="main__container container">
+            <div class="compare">
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="compare__form">
+                        <div class="compare__row">
+                            <div class="compare__column">
+                                <label class="compare__label">
+                                    <span class="btn btn_secondary">Выбрать файл</span>
+                                    <input type="file" name="document" id="id_document" class="compare__input">
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="compare__btn btn btn_primary">Выполнить слияние</button>
+                        {{ form.errors }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

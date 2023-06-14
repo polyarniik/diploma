@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <main class="main">
+        <div class="main__container container">
+            <div class="commits">
+                <h2 class="commits__title title">История изменений</h2>
+                <div class="commits__list">
+                    {% for commit in commits %}
+                        <a href="{% url 'repositories:commit_view' pk=commit.repository.pk commit_id=commit.pk %}"
+                           class="commits__item commit">
+                            <div class="commit__name">{{ commit.message }}</div>
+                            <div class="commit__meta">
+                                <div class="commit__author">
+                                    Автор: <span>{{ commit.user.username }}</span>
+                                </div>
+                                <div class="commit__time">Дата: {{ commit.created_at }}</div>
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

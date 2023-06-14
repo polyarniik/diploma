@@ -1,0 +1,55 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <main class="main">
+        <div class="main__container container">
+            <div class="settings">
+                <h2 class="settings__title title">Настройки</h2>
+                <div class="settings__repo">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="settings__list">
+                            <div class="settings__item">
+                                <label class="settings__label" for="id_name">Название</label>
+                                <input id="id_name" name="name" class="settings__input text-input" type="text" value={{ repository.name }}>
+                            </div>
+                        </div>
+                        <button class="settings__btn btn btn_primary" type="submit">Сохранить</button>
+                    </form>
+                </br>
+                <form method="post"
+                      action="{% url 'repositories:repository_delete' pk=object.pk %}">
+                    {% csrf_token %}
+                    <button type="submit" class="settings__btn btn btn_secondary">Удалить</button>
+                </form>
+            </div>
+            <div class="settings__users">
+                <div class="settings__label">Пользователи</div>
+                <form action="{% url 'repositories:add_member' pk=repository.pk %}"
+                      method="post">
+                    {% csrf_token %}
+                    <div class="users-list__form">
+                        <input class="text-input" type="text" name="username" autocomplete="none">
+                        <button class="btn btn_primary">Добавить</button>
+                    </div>
+                </form>
+                <div class="users-list">
+                    {% for member in repository.repository_members.all %}
+                        <div class="users-list__item">
+                            <div class="users-list__name">{{ member.username }}</div>
+                            <form action="{% url 'repositories:delete_member' pk=repository.pk %}"
+                                  method="post">
+                                {% csrf_token %}
+                                <button type="submit"
+                                        class="users-list__btn"
+                                        name="username"
+                                        value="{{ member.username }}">X</button>
+                            </form>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock content %}

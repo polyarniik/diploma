@@ -1,0 +1,28 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <main class="main">
+        <div class="main__container container">
+            <div class="repositories">
+                <div class="repositories__header">
+                    <div class="repositories__title">Репозитории</div>
+                    <div class="repositories__nav">
+                        <a href="{% url 'repositories:repository_create' %}"
+                           class="btn btn_secondary">Создать</a>
+                    </div>
+                </div>
+                <div class="repositories__list">
+                    {% for repository in repositories %}
+                        <a href="{% url 'repositories:repository_view' pk=repository.pk %}"
+                           class="repositories__item repository-item">
+                            <div class="repository-item__name">{{ repository.name }}</div>
+                            <div class="repository-item__date">
+                                {{ repository.commits.first.message }} – {{ repository.commits.first.created_at }}
+                            </div>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

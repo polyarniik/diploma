@@ -1,0 +1,32 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <main class="main">
+        <div class="main__container container">
+            <div class="repositories__title">{{ repository.name }}</div>
+            <div class="repository">
+                <div class="repository__header">
+                    <a href="{% url 'repositories:commit_create' pk=repository.pk %}"
+                       class="btn btn_secondary">Добавить новую версию</a>
+                    <a href="{% url 'repositories:commit_list' pk=repository.pk %}"
+                       class="btn btn_secondary">История изменений</a>
+                    <a href="{% url 'repositories:merge' pk=repository.pk %}"
+                       class="btn btn_secondary">Выполнить слияние</a>
+                    <form action="">
+                        <button type="submit" class="btn btn_secondary">Скачать DOCX</button>
+                    </form>
+                    <form action="">
+                        <button type="submit" class="btn btn_secondary">Скачать PDF</button>
+                    </form>
+                    <a href="{% url 'repositories:repository_settings' pk=repository.pk %}"
+                       class="btn btn_secondary">Настройки</a>
+                </div>
+                <embed class="repository__embed"
+                       src="{{ repository.commits.first.pdf_doocument }}"
+                       frameborder="0"
+                       type="application/pdf">
+            </embed>
+        </div>
+    </div>
+</main>
+{% endblock content %}
